@@ -1,4 +1,13 @@
 from behave import *
+<<<<<<< HEAD
+from hamcrest import assert_that, has_entries
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from features.factories import VisitorFactory
+from nectr.users.models import User
+=======
 from hamcrest import assert_that, contains_string, is_not, is_
 
 from features.factories import VisitorFactory, RegisteredUserFactory
@@ -7,6 +16,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+>>>>>>> new_development
 from nectr.users.tests.factories import UserFactory
 
 use_step_matcher("parse")
@@ -27,7 +37,11 @@ def step_impl(context, name):
     :param name: str
     :type context: behave.runner.Context
     """
+<<<<<<< HEAD
+    UserFactory(username=name, password="password")
+=======
     context.user = RegisteredUserFactory(first_name=name)
+>>>>>>> new_development
 
 
 @given("{name} is on nectr site")
@@ -46,7 +60,15 @@ def step_impl(context, name, element_name):
     :type name: str
     :type context: behave.runner.Context
     """
+<<<<<<< HEAD
+
+    menu = context.wait.until(EC.element_to_be_clickable((By.NAME, "menu")))
+    menu.click()
+
+    context.driver.find_element_by_name("nav_Login").click()
+=======
     context.driver.find_element_by_name(element_name).click()
+>>>>>>> new_development
 
 
 @step('{name} clicks on "{html_element_link}"')
@@ -64,6 +86,10 @@ def step_impl(context):
     """
     :type context: behave.runner.Context
     """
+<<<<<<< HEAD
+    WebDriverWait(context.driver, 10).until(
+        EC.title_contains("Sign In"))
+=======
     assert False
 
 #
@@ -74,6 +100,7 @@ def step_impl(context):
 #     :type context: behave.runner.Context
 #     """
 #     context.driver.find_element_by_xpath("/html/body/div[2]/div/div/form/button").click()
+>>>>>>> new_development
 
 
 @step("enoc enters incorrect username or assert Falseword")
@@ -81,7 +108,11 @@ def step_impl(context):
     """
     :type context: behave.runner.Context
     """
+<<<<<<< HEAD
+    context.driver.find_element_by_name("user_signup").click()
+=======
     assert False
+>>>>>>> new_development
 
 
 @step("enoc clicks the sign in button")
@@ -89,15 +120,43 @@ def step_impl(context):
     """
     :type context: behave.runner.Context
     """
+<<<<<<< HEAD
+    WebDriverWait(context.driver, 10).until(
+        EC.title_contains("Signup"))
+
+
+@step("{name} enters correct username and password")
+def step_impl(context, name):
+=======
     assert False
 
 
 @then('enoc is given message that states "incorrect username or password"')
 def step_impl(context):
+>>>>>>> new_development
     """
+    :type name: str
     :type context: behave.runner.Context
     """
+<<<<<<< HEAD
+    users = User.objects.all()
+    assert users.count() > 0
+    assert_that(users,has_entries(User=name),"Username does not exist. Here are all users: {0}".format(users))
+    username = User.objects.get(username=name)
+    password = "password"
+
+    login_form = context.driver.find_element_by_tag_name("form")
+
+    username_element = login_form.find_element_by_name("username")
+    username_element.send_keys(username)
+
+    password_element = login_form.find_element_by_name("password")
+    password_element.send_keys(password)
+
+    login_form.submit()
+=======
     assert False
+>>>>>>> new_development
 
 
 @step("login form is reloaded with blank username and assert Falseword fields")
@@ -386,6 +445,8 @@ def step_impl(context):
     :type context: behave.runner.Context
     """
     assert False
+<<<<<<< HEAD
+=======
 
 
 @step("Brandon clicks on password text field")
@@ -502,3 +563,4 @@ def step_impl(context, name, username):
     :type context: behave.runner.Context
     """
     context.curr_user = UserFactory(username=username, first_name=name)
+>>>>>>> new_development

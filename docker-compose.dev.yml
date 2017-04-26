@@ -70,6 +70,16 @@ services:
     ports:
       - "8025:8025"
 
+<<<<<<< HEAD
+  jenkins:
+  image: jenkins:2.0
+  restart: always
+  ports:
+    - "8889:8080"
+  volumes:
+    - ./.jenkins:/var/jenkins_home
+
+=======
   hub:
     image: selenium/hub
     expose:
@@ -98,3 +108,4 @@ services:
     environment:
       HUB_PORT_4444_TCP_ADDR: hub
       HUB_PORT_4444_TCP_PORT: 4444
+>>>>>>> new_development

@@ -7,6 +7,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
+from nectr.search import views
 
 urlpatterns = [
                   url(r'^$', TemplateView.as_view(template_name='pages/index.html'), name='home'),
@@ -22,6 +23,22 @@ urlpatterns = [
                   # Your stuff: custom urls includes go here
 
 
+<<<<<<< HEAD
+                  # Search the Hive
+                  url(r'^search_the_hive', TemplateView.as_view(template_name='pages/search_the_hive.html'),
+                      name='search'),
+                  url(r'^search/$', views.search_page, name='search_page'),
+                  # Join the Hive
+                  url(r'^join_the_hive', TemplateView.as_view(template_name='pages/join_the_hive.html'), name='join'),
+                  # Become a tutor
+                  url(r'^become_a_tutor', TemplateView.as_view(template_name='pages/become_a_tutor.html'), name='join'),
+                  # About the Hive
+                  url(r'^about', TemplateView.as_view(template_name='pages/about.html'), name='about'),
+                  # How it Works
+                  url(r'^how_it_works', TemplateView.as_view(template_name='pages/how_it_works.html'),
+                      name='how_it_works'),
+
+=======
 
     # Search the Hive
     url(r'^search_the_hive', TemplateView.as_view(template_name='pages/search_the_hive.html'), name='search'),
@@ -32,10 +49,12 @@ urlpatterns = [
     # How it Works
     url(r'^how_it_works', TemplateView.as_view(template_name='pages/how_it_works.html'), name='how_it_works'),
 
+url(r'^tutor_information', TemplateView.as_view(template_name='pages/tutor_information.html'), name='tutor_information'),
 
     url(r'^test_html', TemplateView.as_view(template_name='nectr_base.html'), name='test'),
     url(r'^test_index_html', TemplateView.as_view(template_name='index.html'), name='test1'),
 
+>>>>>>> new_development
 
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

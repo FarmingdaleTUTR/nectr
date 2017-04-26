@@ -1,4 +1,6 @@
-
+form{
+  color:#000;
+}
 /* Full-width input fields */
 input[type=text], input[type=password] {
     width: 100%;
@@ -33,6 +35,13 @@ button {
 .container {
     padding: 16px;
 }
+
+
+.test{
+    height:200px;
+    width:200px;
+}
+
 
 /* The Modal (background) */
 .modal {
